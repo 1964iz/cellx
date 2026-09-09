@@ -1,0 +1,6 @@
+{
+  "name": "CellStore Pro - Gestão de Celulares e Acessórios",
+  "description": "Sistema completo de ERP e PDV para lojas de celulares e acessórios com controle individual por IMEI, caixa, financeiro, garantias e emissão de recibos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
