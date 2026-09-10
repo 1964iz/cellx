@@ -371,53 +371,70 @@ export const Header: React.FC<HeaderProps> = ({
                 {currentUser.name}
               </p>
               <p className="text-[10px] text-blue-400 font-medium">
-                {currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}
+                {currentUser.jobTitle || 'Técnico e Vendedor'}
               </p>
             </div>
           </button>
 
           {isUserDropdownOpen && (
             <div className="absolute right-0 mt-2 w-72 bg-[#0c1424] rounded-2xl shadow-2xl border border-slate-700/80 p-2 z-50 text-xs text-slate-200 animate-in fade-in slide-in-from-top-1">
-              <div className="p-2 border-b border-slate-800 mb-1">
-                <p className="font-bold text-slate-100 text-sm">{currentUser.name}</p>
-                <p className="text-slate-400 text-[11px]">{currentUser.email}</p>
-                {(currentUser.phone || '(11) 98765-4321') && (
-                  <p className="text-slate-400 text-[11px]">{currentUser.phone || '(11) 98765-4321'}</p>
-                )}
-                <div className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-blue-300 bg-blue-950/70 border border-blue-800/70 px-2 py-0.5 rounded-md w-fit">
-                  <UserCheck className="w-3.5 h-3.5 text-blue-400" />
-                  <span>{currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}</span>
+              <div className="p-2.5 border-b border-slate-800 mb-1">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs">
+                    {currentUser.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-100 text-sm leading-tight">{currentUser.name}</p>
+                    <p className="text-[11px] text-blue-400 font-medium">
+                      {currentUser.jobTitle || 'Técnico e Vendedor'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-800/80 space-y-1 text-[11px] text-slate-400">
+                  <div className="flex items-center justify-between">
+                    <span>Telefone:</span>
+                    <span className="text-slate-200 font-medium">{currentUser.phone || '(11) 98765-4321'}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Cargo:</span>
+                    <span className="text-blue-300 font-medium">{currentUser.jobTitle || 'Técnico e Vendedor'}</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                Alternar Usuário para Testes
-              </div>
+              {allUsers.length > 1 && (
+                <>
+                  <div className="px-2 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    Alternar Usuário
+                  </div>
 
-              <div className="space-y-1">
-                {allUsers.map((user) => (
-                  <button
-                    key={user.id}
-                    onClick={() => {
-                      onSwitchUser(user);
-                      setIsUserDropdownOpen(false);
-                    }}
-                    className={`w-full flex items-center justify-between p-2 rounded-lg text-left transition-colors cursor-pointer ${
-                      currentUser.id === user.id ? 'bg-slate-800 text-white font-semibold' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
-                    }`}
-                  >
-                    <div>
-                      <p className="font-medium">{user.name}</p>
-                      <p className="text-[10px] text-slate-400">
-                        {user.jobTitle || (user.role === 'admin' ? 'Técnico TI' : user.role)}
-                      </p>
-                    </div>
-                    {currentUser.id === user.id && (
-                      <span className="w-2 h-2 rounded-full bg-blue-500" />
-                    )}
-                  </button>
-                ))}
-              </div>
+                  <div className="space-y-1">
+                    {allUsers.map((user) => (
+                      <button
+                        key={user.id}
+                        onClick={() => {
+                          onSwitchUser(user);
+                          setIsUserDropdownOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between p-2 rounded-lg text-left transition-colors cursor-pointer ${
+                          currentUser.id === user.id ? 'bg-slate-800 text-white font-semibold' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
+                        }`}
+                      >
+                        <div>
+                          <p className="font-medium">{user.name}</p>
+                          <p className="text-[10px] text-slate-400">
+                            {user.jobTitle || (user.role === 'admin' ? 'Técnico e Vendedor' : user.role)}
+                          </p>
+                        </div>
+                        {currentUser.id === user.id && (
+                          <span className="w-2 h-2 rounded-full bg-blue-500" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           )}
         </div>

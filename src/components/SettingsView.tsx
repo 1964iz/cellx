@@ -60,7 +60,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setEditingUser(u);
     setUserName(u.name);
     setUserEmail(u.email);
-    setUserJobTitle(u.jobTitle || (u.role === 'admin' ? 'Técnico TI' : ''));
+    setUserJobTitle(u.jobTitle || (u.role === 'admin' ? 'Técnico e Vendedor' : ''));
     setUserPhone(u.phone || '');
     setUserRole(u.role);
     setUserCommission(u.commissionPercentage);
@@ -75,7 +75,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       id: editingUser ? editingUser.id : 'user_' + Date.now(),
       name: userName.trim(),
       email: userEmail.trim() || `${userName.toLowerCase().replace(/\s+/g, '')}@loja.com`,
-      jobTitle: userJobTitle.trim() || (userRole === 'admin' ? 'Técnico TI' : undefined),
+      jobTitle: userJobTitle.trim() || (userRole === 'admin' ? 'Técnico e Vendedor' : undefined),
       phone: userPhone.trim() || undefined,
       role: userRole,
       active: editingUser ? editingUser.active : true,
@@ -370,7 +370,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                       <p className="font-bold text-slate-900">{u.name}</p>
                       {(u.jobTitle || u.role === 'admin') && (
                         <p className="text-[11px] text-blue-600 font-medium">
-                          {u.jobTitle || (u.role === 'admin' ? 'Técnico TI' : '')}
+                          {u.jobTitle || (u.role === 'admin' ? 'Técnico e Vendedor' : '')}
                         </p>
                       )}
                     </td>
@@ -503,7 +503,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <label className="font-bold text-slate-700 block mb-1">Cargo / Função</label>
                   <input
                     type="text"
-                    placeholder="Ex: Técnico TI"
+                    placeholder="Ex: Técnico e Vendedor"
                     value={userJobTitle}
                     onChange={(e) => setUserJobTitle(e.target.value)}
                     className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900"

@@ -212,7 +212,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-white truncate">{currentUser.name}</p>
                 <p className="text-[10px] text-blue-400 font-medium truncate">
-                  {currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}
+                  {currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico e Vendedor' : currentUser.role)}
                 </p>
               </div>
             </div>

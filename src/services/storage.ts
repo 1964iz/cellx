@@ -12,10 +12,10 @@ const STORAGE_KEY_PREFIX = 'cellstore_pro_';
 const INITIAL_USERS: User[] = [
   {
     id: 'usr_1',
-    name: 'W2 Suporte',
+    name: 'IGOR ZELNIK',
     email: 'w2suporte@gmail.com',
     role: 'admin',
-    jobTitle: 'Técnico TI',
+    jobTitle: 'Técnico e Vendedor',
     phone: '(11) 98765-4321',
     active: true,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
@@ -25,51 +25,6 @@ const INITIAL_USERS: User[] = [
       canDeleteSales: true,
       canAccessFinancial: true,
       canManageUsers: true,
-      canManageStock: true,
-    }
-  },
-  {
-    id: 'usr_2',
-    name: 'Mariana Silva (Gerente)',
-    email: 'mariana@techcell.com.br',
-    role: 'gerente',
-    active: true,
-    permissions: {
-      canEditPrices: true,
-      canGiveDiscounts: true,
-      canDeleteSales: false,
-      canAccessFinancial: true,
-      canManageUsers: false,
-      canManageStock: true,
-    }
-  },
-  {
-    id: 'usr_3',
-    name: 'Lucas Ferreira (Vendedor)',
-    email: 'lucas@techcell.com.br',
-    role: 'vendedor',
-    active: true,
-    permissions: {
-      canEditPrices: false,
-      canGiveDiscounts: true,
-      canDeleteSales: false,
-      canAccessFinancial: false,
-      canManageUsers: false,
-      canManageStock: false,
-    }
-  },
-  {
-    id: 'usr_4',
-    name: 'Rafael Oliveira (Estoquista)',
-    email: 'rafael@techcell.com.br',
-    role: 'estoquista',
-    active: true,
-    permissions: {
-      canEditPrices: false,
-      canGiveDiscounts: false,
-      canDeleteSales: false,
-      canAccessFinancial: false,
-      canManageUsers: false,
       canManageStock: true,
     }
   }
@@ -719,8 +674,8 @@ const INITIAL_SALES: Sale[] = [
     ],
     change: 0,
     status: 'concluida',
-    sellerName: 'Lucas Ferreira',
-    sellerId: 'usr_3',
+    sellerName: 'IGOR ZELNIK',
+    sellerId: 'usr_1',
     warrantyDays: 365,
     notes: 'Aparelho ativado na loja, película aplicada com sucesso.'
   },
@@ -770,8 +725,8 @@ const INITIAL_SALES: Sale[] = [
     ],
     change: 0,
     status: 'concluida',
-    sellerName: 'Mariana Silva',
-    sellerId: 'usr_2',
+    sellerName: 'IGOR ZELNIK',
+    sellerId: 'usr_1',
     warrantyDays: 90,
     notes: 'Entrada de R$ 1.930 e saldo de R$ 1.500 dividido em 2x no carnê da loja.'
   }
@@ -894,7 +849,7 @@ const INITIAL_CASH_REGISTERS: CashRegister[] = [
   {
     id: 'cx_001',
     openedAt: '2026-09-08T08:30:00Z',
-    openedBy: 'W2 Suporte (Técnico TI)',
+    openedBy: 'IGOR ZELNIK (Técnico e Vendedor)',
     initialBalance: 400.00,
     status: 'aberto',
     entries: 4920.00,
@@ -913,7 +868,7 @@ const INITIAL_CASH_MOVEMENTS: CashMovement[] = [
     amount: 400.00,
     description: 'Troco inicial de abertura do caixa',
     paymentMethod: 'Dinheiro',
-    userName: 'W2 Suporte (Técnico TI)'
+    userName: 'IGOR ZELNIK'
   },
   {
     id: 'cm_2',
@@ -924,7 +879,7 @@ const INITIAL_CASH_MOVEMENTS: CashMovement[] = [
     amount: 1390.00,
     description: 'Venda de Redmi Note 13',
     paymentMethod: 'PIX',
-    userName: 'Lucas Ferreira'
+    userName: 'IGOR ZELNIK'
   },
   {
     id: 'cm_3',
@@ -935,7 +890,7 @@ const INITIAL_CASH_MOVEMENTS: CashMovement[] = [
     amount: 250.00,
     description: 'Compra de material de limpeza e suprimentos de balcão',
     paymentMethod: 'Dinheiro',
-    userName: 'Mariana Silva'
+    userName: 'IGOR ZELNIK'
   },
   {
     id: 'cm_4',
@@ -946,7 +901,7 @@ const INITIAL_CASH_MOVEMENTS: CashMovement[] = [
     amount: 279.00,
     description: 'Venda Fone JBL Tune 520BT',
     paymentMethod: 'Cartão de Débito',
-    userName: 'Lucas Ferreira'
+    userName: 'IGOR ZELNIK'
   }
 ];
 
@@ -1013,8 +968,8 @@ const INITIAL_MOVEMENTS: StockMovement[] = [
     costPrice: 5800,
     sellPrice: 7299,
     reason: 'Entrada NF 48291 Distribuidora Alpha Tech',
-    userName: 'Rafael Oliveira',
-    userId: 'usr_4'
+    userName: 'IGOR ZELNIK',
+    userId: 'usr_1'
   },
   {
     id: 'mov_2',
@@ -1027,8 +982,8 @@ const INITIAL_MOVEMENTS: StockMovement[] = [
     costPrice: 5800,
     sellPrice: 7000,
     reason: 'Venda VENDA-2026-0001',
-    userName: 'Lucas Ferreira',
-    userId: 'usr_3'
+    userName: 'IGOR ZELNIK',
+    userId: 'usr_1'
   },
   {
     id: 'mov_3',
@@ -1041,8 +996,8 @@ const INITIAL_MOVEMENTS: StockMovement[] = [
     costPrice: 2400,
     sellPrice: 3250,
     reason: 'Venda VENDA-2026-0002',
-    userName: 'Mariana Silva',
-    userId: 'usr_2'
+    userName: 'IGOR ZELNIK',
+    userId: 'usr_1'
   }
 ];
 
@@ -1143,32 +1098,85 @@ class RelationalDatabaseEngine {
         if (found) this.currentUser = found;
       }
 
-      // Ensure user usr_1 / Carlos is updated to W2 Suporte with requested email, phone and jobTitle
+      // Ensure user IGOR ZELNIK is set as Técnico e Vendedor, and remove mock users (gerente, vendedor, estoquista)
       let needsMigrationSave = false;
-      this.users = this.users.map((u) => {
-        if (u.id === 'usr_1' || u.name.toLowerCase().includes('carlos')) {
-          needsMigrationSave = true;
-          return {
-            ...u,
-            name: 'W2 Suporte',
-            email: 'w2suporte@gmail.com',
-            phone: '(11) 98765-4321',
-            jobTitle: 'Técnico TI',
-          };
-        }
-        return u;
-      });
 
-      if (this.currentUser.id === 'usr_1' || this.currentUser.name.toLowerCase().includes('carlos')) {
-        this.currentUser = {
-          ...this.currentUser,
-          name: 'W2 Suporte',
-          email: 'w2suporte@gmail.com',
-          phone: '(11) 98765-4321',
-          jobTitle: 'Técnico TI',
-        };
+      // Filter out gerente, vendedor, estoquista mock users
+      const prevCount = this.users.length;
+      this.users = this.users.filter((u) => {
+        const n = u.name.toLowerCase();
+        const isMockRemoved = 
+          n.includes('mariana') || 
+          n.includes('lucas') || 
+          n.includes('rafael') || 
+          (n.includes('gerente') && !n.includes('igor')) || 
+          (n.includes('estoquista') && !n.includes('igor')) || 
+          (n.includes('vendedor') && !n.includes('igor'));
+        return !isMockRemoved;
+      });
+      if (this.users.length !== prevCount) {
         needsMigrationSave = true;
       }
+
+      // Update or create IGOR ZELNIK
+      const hasIgor = this.users.some((u) => u.name.toUpperCase().includes('IGOR ZELNIK'));
+      if (!hasIgor) {
+        const primaryUser = this.users.find((u) => u.id === 'usr_1') || this.users[0];
+        if (primaryUser) {
+          primaryUser.name = 'IGOR ZELNIK';
+          primaryUser.email = 'w2suporte@gmail.com';
+          primaryUser.phone = '(11) 98765-4321';
+          primaryUser.jobTitle = 'Técnico e Vendedor';
+          primaryUser.role = 'admin';
+        } else {
+          this.users = [...INITIAL_USERS];
+        }
+        needsMigrationSave = true;
+      } else {
+        this.users = this.users.map((u) => {
+          if (u.name.toUpperCase().includes('IGOR ZELNIK')) {
+            return {
+              ...u,
+              name: 'IGOR ZELNIK',
+              jobTitle: 'Técnico e Vendedor',
+              phone: u.phone || '(11) 98765-4321',
+              email: u.email || 'w2suporte@gmail.com',
+            };
+          }
+          return u;
+        });
+      }
+
+      const igorUser = this.users.find((u) => u.name.toUpperCase().includes('IGOR ZELNIK')) || this.users[0] || INITIAL_USERS[0];
+      this.currentUser = igorUser;
+      localStorage.setItem(STORAGE_KEY_PREFIX + 'current_user_id', igorUser.id);
+
+      // Clean up past sales seller names to IGOR ZELNIK
+      this.sales = this.sales.map((s) => {
+        if (!s.sellerName || s.sellerName.includes('Lucas') || s.sellerName.includes('Mariana') || s.sellerName.includes('Carlos') || s.sellerName.includes('W2')) {
+          needsMigrationSave = true;
+          return { ...s, sellerName: 'IGOR ZELNIK', sellerId: igorUser.id };
+        }
+        return s;
+      });
+
+      // Clean up cash movements user names
+      this.cashMovements = this.cashMovements.map((m) => {
+        if (!m.userName || m.userName.includes('Lucas') || m.userName.includes('Mariana') || m.userName.includes('Carlos') || m.userName.includes('W2') || m.userName.includes('Rafael')) {
+          needsMigrationSave = true;
+          return { ...m, userName: 'IGOR ZELNIK' };
+        }
+        return m;
+      });
+
+      // Clean up cash registers
+      this.cashRegisters = this.cashRegisters.map((c) => {
+        if (c.openedBy && (c.openedBy.includes('Carlos') || c.openedBy.includes('W2') || c.openedBy.includes('Lucas') || c.openedBy.includes('Mariana'))) {
+          needsMigrationSave = true;
+          return { ...c, openedBy: 'IGOR ZELNIK (Técnico e Vendedor)' };
+        }
+        return c;
+      });
 
       // Store settings contact details
       if (this.settings.email === 'contato@techcellprime.com.br' || !this.settings.email) {
