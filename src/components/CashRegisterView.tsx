@@ -176,7 +176,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total em Dinheiro</span>
-              <p className="text-xl font-extrabold text-emerald-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {expectedCashInDrawer.toFixed(2)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">Saldo físico esperado na gaveta</p>
@@ -184,7 +184,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total em PIX</span>
-              <p className="text-xl font-extrabold text-blue-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {cashRegister.totalPix.toFixed(2)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">Entradas direto em conta</p>
@@ -192,7 +192,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Cartão de Crédito</span>
-              <p className="text-xl font-extrabold text-purple-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {cashRegister.totalCreditCard.toFixed(2)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">Operações na maquininha</p>
@@ -200,7 +200,7 @@ export const CashRegisterView: React.FC<CashRegisterViewProps> = ({
 
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Cartão de Débito</span>
-              <p className="text-xl font-extrabold text-indigo-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {cashRegister.totalDebitCard.toFixed(2)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">Débito na maquininha</p>

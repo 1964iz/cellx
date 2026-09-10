@@ -210,8 +210,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 {currentUser.name.charAt(0)}
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-white truncate">{currentUser.name.split(' ')[0]}</p>
-                <p className="text-[10px] text-blue-400 font-medium capitalize truncate">{currentUser.role}</p>
+                <p className="text-xs font-semibold text-white truncate">{currentUser.name}</p>
+                <p className="text-[10px] text-blue-400 font-medium truncate">
+                  {currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}
+                </p>
               </div>
             </div>
             <button

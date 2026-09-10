@@ -114,7 +114,7 @@ export const AccountsPayableView: React.FC<AccountsPayableViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total a Pagar</span>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalPending.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-0.5">Compromissos pendentes</p>
@@ -122,7 +122,7 @@ export const AccountsPayableView: React.FC<AccountsPayableViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-rose-500">Contas Vencidas</span>
-          <p className="text-2xl font-extrabold text-rose-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-rose-600 mt-1">
             R$ {totalOverdue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-rose-600 mt-0.5">Atrasadas que geram juros</p>
@@ -130,7 +130,7 @@ export const AccountsPayableView: React.FC<AccountsPayableViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Total Pago</span>
-          <p className="text-2xl font-extrabold text-emerald-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalPaid.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-0.5">Despesas já quitadas</p>

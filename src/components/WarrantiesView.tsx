@@ -53,19 +53,19 @@ export const WarrantiesView: React.FC<WarrantiesViewProps> = ({ warranties, sett
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Garantias Ativas</span>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">{activeCount} aparelhos</p>
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">{activeCount} aparelhos</p>
           <p className="text-[11px] text-slate-500 mt-0.5">Em período regular de cobertura</p>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600">A Vencer em Breve</span>
-          <p className="text-2xl font-extrabold text-amber-600 mt-1">{expiringCount} aparelhos</p>
+          <p className="text-2xl sm:text-3xl font-light text-amber-600 mt-1">{expiringCount} aparelhos</p>
           <p className="text-[11px] text-amber-700 mt-0.5">Menos de 15 dias restantes</p>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Garantias Expiradas</span>
-          <p className="text-2xl font-extrabold text-slate-700 mt-1">{expiredCount} aparelhos</p>
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">{expiredCount} aparelhos</p>
           <p className="text-[11px] text-slate-400 mt-0.5">Prazo concluído</p>
         </div>
       </div>

@@ -33,6 +33,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userJobTitle, setUserJobTitle] = useState('');
+  const [userPhone, setUserPhone] = useState('');
   const [userRole, setUserRole] = useState<'admin' | 'gerente' | 'vendedor' | 'caixa'>('vendedor');
   const [userCommission, setUserCommission] = useState(3);
 
@@ -47,6 +49,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setEditingUser(null);
     setUserName('');
     setUserEmail('');
+    setUserJobTitle('');
+    setUserPhone('');
     setUserRole('vendedor');
     setUserCommission(3);
     setIsUserModalOpen(true);
@@ -56,6 +60,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setEditingUser(u);
     setUserName(u.name);
     setUserEmail(u.email);
+    setUserJobTitle(u.jobTitle || (u.role === 'admin' ? 'Técnico TI' : ''));
+    setUserPhone(u.phone || '');
     setUserRole(u.role);
     setUserCommission(u.commissionPercentage);
     setIsUserModalOpen(true);
@@ -69,6 +75,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       id: editingUser ? editingUser.id : 'user_' + Date.now(),
       name: userName.trim(),
       email: userEmail.trim() || `${userName.toLowerCase().replace(/\s+/g, '')}@loja.com`,
+      jobTitle: userJobTitle.trim() || (userRole === 'admin' ? 'Técnico TI' : undefined),
+      phone: userPhone.trim() || undefined,
       role: userRole,
       active: editingUser ? editingUser.active : true,
       commissionPercentage: Number(userCommission) || 0,
@@ -358,8 +366,18 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               <tbody className="divide-y divide-slate-100">
                 {users.map((u) => (
                   <tr key={u.id} className="hover:bg-slate-50">
-                    <td className="py-3 px-4 font-bold text-slate-900">{u.name}</td>
-                    <td className="py-3 px-4 text-slate-500">{u.email}</td>
+                    <td className="py-3 px-4">
+                      <p className="font-bold text-slate-900">{u.name}</p>
+                      {(u.jobTitle || u.role === 'admin') && (
+                        <p className="text-[11px] text-blue-600 font-medium">
+                          {u.jobTitle || (u.role === 'admin' ? 'Técnico TI' : '')}
+                        </p>
+                      )}
+                    </td>
+                    <td className="py-3 px-4">
+                      <p className="text-slate-700">{u.email}</p>
+                      {u.phone && <p className="text-[11px] text-slate-400">{u.phone}</p>}
+                    </td>
                     <td className="py-3 px-4">
                       <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 font-semibold text-[10px] capitalize">
                         {u.role}
@@ -478,6 +496,30 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   onChange={(e) => setUserEmail(e.target.value)}
                   className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900"
                 />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Cargo / Função</label>
+                  <input
+                    type="text"
+                    placeholder="Ex: Técnico TI"
+                    value={userJobTitle}
+                    onChange={(e) => setUserJobTitle(e.target.value)}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Telefone / Celular</label>
+                  <input
+                    type="text"
+                    placeholder="Ex: (11) 98765-4321"
+                    value={userPhone}
+                    onChange={(e) => setUserPhone(e.target.value)}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">

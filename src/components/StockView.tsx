@@ -118,13 +118,13 @@ export const StockView: React.FC<StockViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total de Peças em Estoque</span>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">{totalItemsCount} unidades</p>
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">{totalItemsCount} unidades</p>
           <p className="text-[11px] text-slate-500 mt-1">Celulares e acessórios</p>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Patrimônio em Custo</span>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-1">Valor investido em mercadorias</p>
@@ -132,7 +132,7 @@ export const StockView: React.FC<StockViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Valor de Venda Projetado</span>
-          <p className="text-2xl font-extrabold text-blue-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalSellValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-1">Faturamento total estimado</p>
@@ -140,10 +140,10 @@ export const StockView: React.FC<StockViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Lucro Bruto Projetado</span>
-          <p className="text-2xl font-extrabold text-emerald-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {projectedProfit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
-          <p className="text-[11px] text-emerald-700 font-semibold mt-1">
+          <p className="text-[11px] text-slate-500 font-normal mt-1">
             Margem de {totalCost > 0 ? ((projectedProfit / totalCost) * 100).toFixed(1) : 0}% sobre o custo
           </p>
         </div>

@@ -282,11 +282,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <div className="text-2xl sm:text-3xl font-light text-[#0f2b5c] tracking-tight">
               R$ {metrics.totalToday.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-              <span className="font-semibold text-blue-600">{metrics.countToday} venda(s)</span> hoje
+              <span className="font-normal text-[#1e3a8a]">{metrics.countToday} venda(s)</span> hoje
             </p>
           </div>
         </div>
@@ -300,11 +300,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <div className="text-2xl sm:text-3xl font-light text-[#0f2b5c] tracking-tight">
               R$ {metrics.totalMonth.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-              <span className="font-semibold text-emerald-600">{metrics.countMonth} pedidos</span> no mês atual
+              <span className="font-normal text-[#1e3a8a]">{metrics.countMonth} pedidos</span> no mês atual
             </p>
           </div>
         </div>
@@ -318,11 +318,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-2xl font-extrabold text-purple-700 tracking-tight">
+            <div className="text-2xl sm:text-3xl font-light text-[#0f2b5c] tracking-tight">
               R$ {metrics.estimatedProfitPeriod.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-              Margem média de <span className="font-semibold text-purple-600">{metrics.marginPercent.toFixed(1)}%</span>
+              Margem média de <span className="font-normal text-[#1e3a8a]">{metrics.marginPercent.toFixed(1)}%</span>
             </p>
           </div>
         </div>
@@ -339,11 +339,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <div className="text-2xl sm:text-3xl font-light text-[#0f2b5c] tracking-tight">
               R$ {metrics.totalReceivablePending.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </div>
             <p className="text-xs mt-1 flex items-center justify-between">
-              <span className={metrics.totalReceivableOverdue > 0 ? 'text-rose-600 font-bold' : 'text-slate-500'}>
+              <span className={metrics.totalReceivableOverdue > 0 ? 'text-rose-600 font-normal' : 'text-slate-500'}>
                 {metrics.totalReceivableOverdue > 0 ? `R$ ${metrics.totalReceivableOverdue.toFixed(2)} vencidos` : 'Nenhum vencido'}
               </span>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform" />
@@ -365,7 +365,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <div>
               <p className="text-xs text-slate-500 font-semibold">Celulares em Estoque</p>
-              <p className="text-lg font-extrabold text-slate-900">{metrics.totalPhonesStock} aparelhos</p>
+              <p className="text-lg font-light text-[#0f2b5c]">{metrics.totalPhonesStock} aparelhos</p>
             </div>
           </div>
           <span className="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold">IMEI</span>
@@ -382,7 +382,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <div>
               <p className="text-xs text-slate-500 font-semibold">Acessórios em Estoque</p>
-              <p className="text-lg font-extrabold text-slate-900">{metrics.totalAccessoriesStock} peças</p>
+              <p className="text-lg font-light text-[#0f2b5c]">{metrics.totalAccessoriesStock} peças</p>
             </div>
           </div>
           <span className="text-[11px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-bold">Geral</span>
@@ -403,7 +403,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <div>
               <p className="text-xs text-slate-500 font-semibold">Estoque Crítico / Baixo</p>
-              <p className="text-lg font-extrabold text-slate-900">
+              <p className="text-lg font-light text-[#0f2b5c]">
                 {metrics.lowStockProducts.length + metrics.zeroStockProducts.length} itens
               </p>
             </div>
@@ -423,14 +423,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <div>
               <p className="text-xs text-slate-500 font-semibold">Valor em Estoque (Custo)</p>
-              <p className="text-lg font-extrabold text-slate-900">
+              <p className="text-lg font-light text-[#0f2b5c]">
                 R$ {metrics.totalStockValueCost.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
               </p>
             </div>
           </div>
           <div className="text-right">
             <p className="text-[10px] text-slate-400">Venda Estimada</p>
-            <p className="text-xs font-bold text-emerald-600">
+            <p className="text-xs font-normal text-[#1e3a8a]">
               R$ {metrics.totalStockValueSell.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
             </p>
           </div>
@@ -511,7 +511,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLORS[idx % COLORS.length] }} />
                   <span className="text-slate-600">{item.name}</span>
                 </div>
-                <span className="font-bold text-slate-800">
+                <span className="font-normal text-[#0f2b5c]">
                   R$ {item.value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -543,7 +543,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               topProductsData.map((prod, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
                   <div className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs flex items-center justify-center">
+                    <span className="w-6 h-6 rounded-full bg-blue-100 text-[#0f2b5c] font-normal text-xs flex items-center justify-center">
                       {idx + 1}
                     </span>
                     <div>
@@ -551,7 +551,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       <p className="text-[11px] text-slate-500">{prod.quantity} unidades vendidas</p>
                     </div>
                   </div>
-                  <span className="font-bold text-slate-900 text-xs sm:text-sm">
+                  <span className="font-normal text-[#0f2b5c] text-xs sm:text-sm">
                     R$ {prod.revenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
@@ -589,7 +589,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-xs text-slate-900">{sale.code}</span>
+                      <span className="font-mono font-normal text-xs text-slate-900">{sale.code}</span>
                       <span className="text-[10px] text-slate-400">
                         {new Date(sale.date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
                       </span>
@@ -600,7 +600,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-extrabold text-xs sm:text-sm text-slate-900">
+                  <p className="font-normal text-xs sm:text-sm text-[#0f2b5c]">
                     R$ {sale.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </p>
                   <p className="text-[10px] text-blue-600 font-semibold group-hover:underline">

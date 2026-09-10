@@ -25,6 +25,8 @@ export interface User {
   name: string;
   email: string;
   role: UserRole;
+  jobTitle?: string;
+  phone?: string;
   active: boolean;
   avatar?: string;
   commissionPercentage?: number;

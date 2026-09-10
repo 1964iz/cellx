@@ -174,21 +174,21 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
             <div className="bg-white p-4 rounded-xl border border-slate-200">
               <span className="text-[11px] font-bold uppercase text-slate-400">Total Faturado</span>
-              <p className="text-xl font-extrabold text-blue-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {totalRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-white p-4 rounded-xl border border-slate-200">
               <span className="text-[11px] font-bold uppercase text-slate-400">Total de Vendas</span>
-              <p className="text-xl font-extrabold text-slate-900 mt-1">{completedSales.length} transações</p>
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">{completedSales.length} transações</p>
             </div>
             <div className="bg-white p-4 rounded-xl border border-slate-200">
               <span className="text-[11px] font-bold uppercase text-slate-400">Peças Vendidas</span>
-              <p className="text-xl font-extrabold text-slate-900 mt-1">{totalItemsSold} unidades</p>
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">{totalItemsSold} unidades</p>
             </div>
             <div className="bg-white p-4 rounded-xl border border-slate-200">
               <span className="text-[11px] font-bold uppercase text-slate-400">Ticket Médio</span>
-              <p className="text-xl font-extrabold text-emerald-600 mt-1">
+              <p className="text-xl sm:text-2xl font-light text-[#0f2b5c] mt-1">
                 R$ {avgTicket.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>

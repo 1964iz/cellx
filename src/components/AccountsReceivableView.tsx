@@ -70,7 +70,7 @@ export const AccountsReceivableView: React.FC<AccountsReceivableViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total a Receber</span>
-          <p className="text-2xl font-extrabold text-slate-900 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalPending.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-0.5">Saldo devedor em carteira</p>
@@ -78,7 +78,7 @@ export const AccountsReceivableView: React.FC<AccountsReceivableViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-rose-500">Parcelas Vencidas</span>
-          <p className="text-2xl font-extrabold text-rose-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-rose-600 mt-1">
             R$ {totalOverdue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-rose-600 mt-0.5">Cobranças com prazo expirado</p>
@@ -86,7 +86,7 @@ export const AccountsReceivableView: React.FC<AccountsReceivableViewProps> = ({
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">Total Já Liquidado</span>
-          <p className="text-2xl font-extrabold text-emerald-600 mt-1">
+          <p className="text-2xl sm:text-3xl font-light text-[#0f2b5c] mt-1">
             R$ {totalReceived.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </p>
           <p className="text-[11px] text-slate-500 mt-0.5">Recebido e integrado ao caixa</p>

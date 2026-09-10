@@ -12,11 +12,13 @@ const STORAGE_KEY_PREFIX = 'cellstore_pro_';
 const INITIAL_USERS: User[] = [
   {
     id: 'usr_1',
-    name: 'Carlos Mendes (Admin)',
-    email: 'carlos@techcell.com.br',
+    name: 'W2 Suporte',
+    email: 'w2suporte@gmail.com',
     role: 'admin',
+    jobTitle: 'Técnico TI',
+    phone: '(11) 98765-4321',
     active: true,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&auto=format&fit=crop&q=80',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
     permissions: {
       canEditPrices: true,
       canGiveDiscounts: true,
@@ -77,9 +79,9 @@ const INITIAL_SETTINGS: StoreSettings = {
   storeName: 'TechCell Prime',
   tradingName: 'TechCell Celulares & Acessórios',
   cnpj: '34.567.890/0001-22',
-  phone: '(11) 3456-7890',
+  phone: '(11) 98765-4321',
   whatsapp: '(11) 98765-4321',
-  email: 'contato@techcellprime.com.br',
+  email: 'w2suporte@gmail.com',
   instagram: '@techcellprime.oficial',
   address: 'Av. Paulista',
   number: '1250',
@@ -892,7 +894,7 @@ const INITIAL_CASH_REGISTERS: CashRegister[] = [
   {
     id: 'cx_001',
     openedAt: '2026-09-08T08:30:00Z',
-    openedBy: 'Carlos Mendes (Admin)',
+    openedBy: 'W2 Suporte (Técnico TI)',
     initialBalance: 400.00,
     status: 'aberto',
     entries: 4920.00,
@@ -911,7 +913,7 @@ const INITIAL_CASH_MOVEMENTS: CashMovement[] = [
     amount: 400.00,
     description: 'Troco inicial de abertura do caixa',
     paymentMethod: 'Dinheiro',
-    userName: 'Carlos Mendes (Admin)'
+    userName: 'W2 Suporte (Técnico TI)'
   },
   {
     id: 'cm_2',
@@ -1139,6 +1141,47 @@ class RelationalDatabaseEngine {
       if (storedUserId) {
         const found = this.users.find((u) => u.id === storedUserId);
         if (found) this.currentUser = found;
+      }
+
+      // Ensure user usr_1 / Carlos is updated to W2 Suporte with requested email, phone and jobTitle
+      let needsMigrationSave = false;
+      this.users = this.users.map((u) => {
+        if (u.id === 'usr_1' || u.name.toLowerCase().includes('carlos')) {
+          needsMigrationSave = true;
+          return {
+            ...u,
+            name: 'W2 Suporte',
+            email: 'w2suporte@gmail.com',
+            phone: '(11) 98765-4321',
+            jobTitle: 'Técnico TI',
+          };
+        }
+        return u;
+      });
+
+      if (this.currentUser.id === 'usr_1' || this.currentUser.name.toLowerCase().includes('carlos')) {
+        this.currentUser = {
+          ...this.currentUser,
+          name: 'W2 Suporte',
+          email: 'w2suporte@gmail.com',
+          phone: '(11) 98765-4321',
+          jobTitle: 'Técnico TI',
+        };
+        needsMigrationSave = true;
+      }
+
+      // Store settings contact details
+      if (this.settings.email === 'contato@techcellprime.com.br' || !this.settings.email) {
+        this.settings.email = 'w2suporte@gmail.com';
+        needsMigrationSave = true;
+      }
+      if (!this.settings.phone || this.settings.phone === '(11) 3456-7890') {
+        this.settings.phone = '(11) 98765-4321';
+        needsMigrationSave = true;
+      }
+
+      if (needsMigrationSave) {
+        this.saveToStorage();
       }
     } catch {
       // Fallback in case of storage quota or parsing errors

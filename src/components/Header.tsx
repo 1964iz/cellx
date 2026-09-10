@@ -367,22 +367,26 @@ export const Header: React.FC<HeaderProps> = ({
               {currentUser.name.charAt(0)}
             </div>
             <div className="hidden md:block text-left">
-              <p className="text-xs font-semibold text-slate-100 leading-tight truncate max-w-[120px]">
-                {currentUser.name.split(' ')[0]}
+              <p className="text-xs font-semibold text-slate-100 leading-tight truncate max-w-[140px]">
+                {currentUser.name}
               </p>
-              <p className="text-[10px] text-blue-400 font-medium capitalize">
-                {currentUser.role}
+              <p className="text-[10px] text-blue-400 font-medium">
+                {currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}
               </p>
             </div>
           </button>
 
           {isUserDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-64 bg-[#0c1424] rounded-2xl shadow-2xl border border-slate-700/80 p-2 z-50 text-xs text-slate-200 animate-in fade-in slide-in-from-top-1">
+            <div className="absolute right-0 mt-2 w-72 bg-[#0c1424] rounded-2xl shadow-2xl border border-slate-700/80 p-2 z-50 text-xs text-slate-200 animate-in fade-in slide-in-from-top-1">
               <div className="p-2 border-b border-slate-800 mb-1">
-                <p className="font-bold text-slate-100">{currentUser.name}</p>
+                <p className="font-bold text-slate-100 text-sm">{currentUser.name}</p>
                 <p className="text-slate-400 text-[11px]">{currentUser.email}</p>
-                <div className="mt-1.5 flex items-center gap-1 text-[11px] font-semibold text-blue-400 bg-blue-950/60 border border-blue-800/60 px-2 py-0.5 rounded-md w-fit">
-                  <UserCheck className="w-3 h-3" /> Perfil Ativo: <span className="capitalize">{currentUser.role}</span>
+                {(currentUser.phone || '(11) 98765-4321') && (
+                  <p className="text-slate-400 text-[11px]">{currentUser.phone || '(11) 98765-4321'}</p>
+                )}
+                <div className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-blue-300 bg-blue-950/70 border border-blue-800/70 px-2 py-0.5 rounded-md w-fit">
+                  <UserCheck className="w-3.5 h-3.5 text-blue-400" />
+                  <span>{currentUser.jobTitle || (currentUser.role === 'admin' ? 'Técnico TI' : currentUser.role)}</span>
                 </div>
               </div>
 
@@ -404,7 +408,9 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div>
                       <p className="font-medium">{user.name}</p>
-                      <p className="text-[10px] text-slate-400 capitalize">{user.role}</p>
+                      <p className="text-[10px] text-slate-400">
+                        {user.jobTitle || (user.role === 'admin' ? 'Técnico TI' : user.role)}
+                      </p>
                     </div>
                     {currentUser.id === user.id && (
                       <span className="w-2 h-2 rounded-full bg-blue-500" />
